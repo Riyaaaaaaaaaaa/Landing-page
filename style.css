@@ -1,90 +1,148 @@
+/* General body and container */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #667eea, #764ba2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  text-align: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .container {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
+  padding: 2.5rem 3rem;
   border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
 }
 
 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-weight: 900;
+  margin-bottom: 0.2em;
+  letter-spacing: 2px;
 }
 
-.selector {
-  margin: 20px 0;
+p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #ddd;
 }
 
-label, select {
-  margin: 10px;
-  font-size: 1rem;
+/* Selectors layout */
+.selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  background-color: #ffd369;
-  color: #222;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #ffb347;
-}
-
-#playlist {
-  margin-top: 30px;
-}
-/* Style for labels */
-.selector label {
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
-  color: #333;
-}
-
-/* Container for label + select */
-.selector label {
+.select-group {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   font-weight: 600;
-  margin-top: 12px;
-  display: block;
-  color: #333;
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
-/* Base style for select */
-.selector select {
-  width: 100%;
-  padding: 10px 40px 10px 12px; /* padding-right to make space for arrow */
-  font-size: 1rem;
-  border: 2px solid #6c63ff;
-  border-radius: 8px;
-  background-color: #f0f4ff;
-  color: #333;
-  cursor: pointer;
-  -webkit-appearance: none; /* Remove default arrow (Safari, Chrome) */
-  -moz-appearance: none; /* Firefox */
+.select-group label {
+  margin-bottom: 0.4rem;
+}
+
+/* Fancy Select style */
+.fancy-select {
   appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="%236c63ff" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background: #2a2a72;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: inset 0 0 8px #4a4ac1;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23fff" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 12px center;
-  background-size: 20px;
-  transition: border-color 0.3s ease;
+  background-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-/* Focus style */
-.selector select:focus {
+.fancy-select:hover, .fancy-select:focus {
+  background-color: #4444b0;
   outline: none;
-  border-color: #4b45c7;
-  box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
 }
+
+/* Platform selector toggle buttons */
+.platform-selector {
+  flex: 1 1 100%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #ccc;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.platform-btn {
+  background: transparent;
+  border: 2px solid #aaa;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.platform-btn:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.platform-btn.active {
+  background: #7b61ff;
+  border-color: #7b61ff;
+  color: white;
+  box-shadow: 0 0 12px #7b61ffaa;
+}
+
+/* Generate Button */
+#generateBtn {
+  flex: 1 1 100%;
+  padding: 12px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  background: #9d7fff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+#generateBtn:hover {
+  background-color: #b892ff;
+}
+
+/* Playlist container */
+#playlist {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  min-height: 150px;
+  color: #eee;
+  box-shadow: inset 0 0 10px #7b61ff66;
+}
+
