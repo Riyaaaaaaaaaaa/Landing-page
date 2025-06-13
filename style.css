@@ -46,3 +46,39 @@ button:hover {
 #playlist {
   margin-top: 30px;
 }
+/* Style for labels */
+.selector label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #333;
+}
+
+/* Stylish Select Dropdowns */
+.selector select {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0 16px;
+  border: 2px solid #6c63ff;
+  border-radius: 8px;
+  background-color: #f0f4ff;
+  color: #333;
+  font-size: 1rem;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236c63ff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* On focus */
+.selector select:focus {
+  outline: none;
+  border-color: #4b45c7;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
