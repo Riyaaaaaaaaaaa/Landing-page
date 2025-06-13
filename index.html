@@ -10,7 +10,11 @@
   <div class="container">
     <h1>MoodTunes 🎧</h1>
     <p>Curated music playlists based on your mood and weather</p>
-    
+    <label for="platform">Platform:</label>
+<select id="platform">
+    <option value="youtube">YouTube</option>
+    <option value="spotify">Spotify</option>
+</select>
     <div class="selector">
       <label for="mood">Your Mood:</label>
       <select id="mood">
@@ -38,11 +42,6 @@
 
     <div id="playlist"></div>
   </div>
- <label for="platform">Platform:</label>
-<select id="platform">
-    <option value="youtube">YouTube</option>
-    <option value="spotify">Spotify</option>
-</select>
   <script src="script.js"></script>
 </body>
 </html>
