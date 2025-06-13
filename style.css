@@ -54,31 +54,37 @@ button:hover {
   color: #333;
 }
 
-/* Stylish Select Dropdowns */
+/* Container for label + select */
+.selector label {
+  font-weight: 600;
+  margin-top: 12px;
+  display: block;
+  color: #333;
+}
+
+/* Base style for select */
 .selector select {
   width: 100%;
-  padding: 10px 12px;
-  margin: 8px 0 16px;
+  padding: 10px 40px 10px 12px; /* padding-right to make space for arrow */
+  font-size: 1rem;
   border: 2px solid #6c63ff;
   border-radius: 8px;
   background-color: #f0f4ff;
   color: #333;
-  font-size: 1rem;
-  font-family: inherit;
+  cursor: pointer;
+  -webkit-appearance: none; /* Remove default arrow (Safari, Chrome) */
+  -moz-appearance: none; /* Firefox */
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="%236c63ff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236c63ff" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 12px center;
-  background-size: 16px;
-  cursor: pointer;
+  background-size: 20px;
+  transition: border-color 0.3s ease;
 }
 
-/* On focus */
+/* Focus style */
 .selector select:focus {
   outline: none;
   border-color: #4b45c7;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
 }
-
