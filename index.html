@@ -1,41 +1,50 @@
-<div class="container">
-  <h1>MoodTunes 🎧</h1>
-  <p>Curated music playlists based on your mood and language preference</p>
-  
-  <div class="selectors">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodTunes 🎧</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>MoodTunes 🎧</h1>
+    <p class="tagline">Curated music playlists based on your mood and weather</p>
 
-    <div class="select-group">
-      <label for="mood">Your Mood:</label>
-      <select id="mood" class="fancy-select">
-        <option value="happy">Happy</option>
-        <option value="sad">Sad</option>
-        <option value="chill">Chill</option>
-        <option value="energetic">Energetic</option>
-        <option value="romantic">Romantic</option>
-        <option value="anxious">Anxious</option>
-        <option value="motivated">Motivated</option>
-      </select>
-    </div>
+    <div class="selectors">
+      <div class="dropdown-group">
+        <label for="mood">Your Mood:</label>
+        <select id="mood" class="fancy-select">
+          <option value="happy">Happy</option>
+          <option value="sad">Sad</option>
+          <option value="chill">Chill</option>
+          <option value="energetic">Energetic</option>
+          <option value="romantic">Romantic</option>
+          <option value="anxious">Anxious</option>
+          <option value="motivated">Motivated</option>
+        </select>
+      </div>
 
-    <div class="select-group">
-      <label for="language">Language:</label>
-      <select id="language" class="fancy-select">
-        <option value="en">English</option>
-        <option value="hi">Hindi</option>
-        <option value="es">Tamil</option>
-        <option value="fr">Malayalam</option>
-        <!-- add more languages if needed -->
-      </select>
-    </div>
+      <div class="dropdown-group">
+        <label for="weather">Weather:</label>
+        <select id="weather" class="fancy-select">
+          <option value="sunny">Sunny</option>
+          <option value="rainy">Rainy</option>
+          <option value="cloudy">Cloudy</option>
+          <option value="snowy">Snowy</option>
+          <option value="windy">Windy</option>
+          <option value="stormy">Stormy</option>
+        </select>
+      </div>
 
-    <div class="platform-selector">
-      <span>Choose Platform:</span>
-      <button class="platform-btn active" data-platform="spotify">Spotify</button>
-      <button class="platform-btn" data-platform="youtube">YouTube</button>
-    </div>
+      <div class="dropdown-group platform-group">
+        <label for="platform">Platform:</label>
+        <select id="platform" class="platform-select">
+          <option value="spotify">Spotify</option>
+          <option value="youtube">YouTube</option>
+        </select>
+      </div>
 
-    <button id="generateBtn">Get Playlist</button>
-  </div>
-
-  <div id="playlist"></div>
-</div>
+      <div class="dropdown-group">
+        <label for="language">Language:</label>
+        <select id="language" class="fancy-select">
