@@ -15,10 +15,16 @@ function getWeather() {
           const temp = data.main.temp;
           document.getElementById("weather").textContent =
             `Current weather: ${weather}, ${temp}°C`;
-          
-          // OPTIONAL: Use this weather value to update playlist or UI
+
           console.log("Detected weather:", weather);
+        })
+        .catch(error => {
+          console.error("Weather fetch error:", error);
+          document.getElementById("weather").textContent = "Failed to load weather.";
         });
+    }, error => {
+      console.error("Geolocation error:", error);
+      document.getElementById("weather").textContent = "Unable to access location.";
     });
   } else {
     document.getElementById("weather").textContent = "Location not supported.";
