@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MoodTunes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MoodTunes 🎧</title>
+
   <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
 <body>
-  <button id="theme-toggle" aria-label="Toggle theme">
-    <i class="fas fa-moon"></i>
-  </button>
-  <canvas id="visualizer"></canvas>
-
   <div class="container">
     <h1>MoodTunes 🎧</h1>
-    <p>Curated music playlists based on your mood and weather</p>
+    <p class="subtitle">Curated music playlists based on your mood, weather, language & platform</p>
 
-    <div class="selector">
-      <label for="mood">Your Mood:</label>
-      <div class="select-wrapper">
-        <i class="fas fa-smile"></i>
-        <select id="mood">
+    <div class="selectors-row">
+      <div class="selector-group">
+        <label for="mood">Your Mood:</label>
+        <select id="mood" class="selector">
           <option value="happy">Happy</option>
           <option value="sad">Sad</option>
           <option value="chill">Chill</option>
@@ -32,85 +30,74 @@
         </select>
       </div>
 
-      <label for="weather">Weather:</label>
-      <div class="select-wrapper">
-        <i class="fas fa-cloud-sun"></i>
-        <select id="weather">
+      <div class="selector-group">
+        <label for="weather">Weather:</label>
+        <select id="weather" class="selector">
           <option value="sunny">Sunny</option>
           <option value="rainy">Rainy</option>
           <option value="cloudy">Cloudy</option>
           <option value="snowy">Snowy</option>
           <option value="windy">Windy</option>
           <option value="stormy">Stormy</option>
+          <option value="foggy">Foggy</option>
         </select>
       </div>
 
-      <label for="language">Language:</label>
-      <div class="select-wrapper">
-        <i class="fas fa-language"></i>
-        <select id="language">
+      <div class="selector-group">
+        <label for="language">Language:</label>
+        <select id="language" class="selector">
           <option value="english">English</option>
           <option value="hindi">Hindi</option>
-          <option value="tamil">Tamil</option>
-          <option value="malayalam">Malayalam</option>
-          <option value="telugu">Telugu</option>
+          <option value="spanish">Spanish</option>
+          <option value="korean">Korean</option>
         </select>
       </div>
 
-      <label for="platform">Platform:</label>
-      <div class="select-wrapper platform-select">
-        <i class="fab fa-youtube"></i>
-        <select id="platform">
-          <option value="spotify">Spotify</option>
-          <option value="youtube">YouTube</option>
+      <div class="selector-group platform-group">
+        <label for="platform">Platform:</label>
+        <select id="platform" class="platform-selector">
+          <option value="spotify"><i class="fab fa-spotify"></i> Spotify</option>
+          <option value="youtube"><i class="fab fa-youtube"></i> YouTube</option>
         </select>
       </div>
-
-      <button onclick="generatePlaylist()">Get Playlist</button>
     </div>
 
-    <div id="playlist"></div>
+    <button id="generateBtn" class="btn">Get Playlist</button>
+
+    <div id="playlist" class="playlist"></div>
+
+    <div class="chatbot-container">
+      <button id="chatbotToggle" class="btn chatbot-btn">💬 Ask MoodBot</button>
+      <div id="chatbot" class="chatbot hidden">
+        <div class="chatbot-header">
+          <h3>MoodBot 🤖</h3>
+          <button id="chatbotClose" class="close-btn">&times;</button>
+        </div>
+        <div id="chatbotMessages" class="chatbot-messages">
+          <div class="message bot">Hi! Confused what to listen? Ask me anything about your mood or music!</div>
+        </div>
+        <input
+          type="text"
+          id="chatbotInput"
+          placeholder="Type your question..."
+          autocomplete="off"
+        />
+      </div>
+    </div>
   </div>
 
-  <div class="weather-box">
-    <p id="weather">Loading weather...</p>
-  </div>
+  <footer>
+    <p>Created by <strong>Riya Ann Varghese</strong></p>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/riya-ann-varghese" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://instagram.com/riyyaaaaaaaaaa" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
-  <script src="weather.js"></script>
-  <script>
-    const toggle = document.getElementById('theme-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      toggle.innerHTML = document.body.classList.contains('dark') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
-
-    const canvas = document.getElementById('visualizer');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let bars = 100;
-    let radius = 150;
-    function drawVisualizer() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < bars; i++) {
-        let angle = (i * Math.PI * 2) / bars;
-        let x = canvas.width / 2 + Math.cos(angle) * radius;
-        let y = canvas.height / 2 + Math.sin(angle) * radius;
-        let height = 50 + Math.random() * 100;
-        let barX = canvas.width / 2 + Math.cos(angle) * (radius - height / 2);
-        let barY = canvas.height / 2 + Math.sin(angle) * (radius - height / 2);
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(barX, barY);
-        ctx.strokeStyle = `hsl(${i * 3.6}, 100%, 70%)`;
-        ctx.lineWidth = 4;
-        ctx.stroke();
-      }
-      requestAnimationFrame(drawVisualizer);
-    }
-    drawVisualizer();
-  </script>
 </body>
 </html>
