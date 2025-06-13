@@ -1,167 +1,224 @@
-/* Root Palette */
-:root {
-  --primary-bg: #0B1D51;
-  --accent1: #725CAD;
-  --accent2: #8CCDEB;
-  --accent3: #FFE3A9;
-  --accent4: #131D4F;
-  --accent5: #954C2E;
-  --text-light: #ffffff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* General Reset and Layout */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--primary-bg);
-  color: var(--text-light);
-  overflow-x: hidden;
-  transition: background 0.5s ease;
+  background: #0B1D51;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+  color: #333;
+  color: white;
 }
 
 .container {
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+  background-color: #131D4F;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(114, 92, 173, 0.5);
+  max-width: 700px;
+  width: 100%;
   text-align: center;
+  margin: 2rem auto;
 }
 
-/* Title and Subtitle */
 h1 {
-  font-size: 3rem;
-  color: var(--text-light);
+  font-size: 2.8rem;
   margin-bottom: 0.5rem;
+  color: white;
 }
-p {
-  font-size: 1.2rem;
+
+.tagline {
+  font-size: 1.1rem;
+  color: #8CCDEB;
   margin-bottom: 2rem;
 }
 
-/* Dropdown Menus */
-.selector {
+.selectors {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
-.selector select,
-.selector button {
-  padding: 0.8rem 1rem;
-  border: none;
-  border-radius: 12px;
-  background: var(--accent2);
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.dropdown-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 200px;
   min-width: 180px;
 }
 
-.selector select:hover,
-.selector button:hover {
-  background: var(--accent3);
+label {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: #FFE3A9;
+  font-weight: 600;
 }
 
-/* Platform Dropdown - Distinct Design */
-#platform {
-  background: var(--accent5);
-  color: #fff;
+.fancy-select,
+.platform-select {
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  border: 2px solid #725CAD;
+  background: #8CCDEB;
+  font-size: 1rem;
+  appearance: none;
+  color: #131D4F;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-#platform:hover {
-  background: var(--accent1);
+.fancy-select:focus,
+.platform-select:focus {
+  outline: none;
+  border-color: #FFE3A9;
+  background: #725CAD;
+  color: #FFE3A9;
 }
 
-/* Button Styling */
-.selector button {
-  background: var(--accent1);
-  color: #fff;
-}
-
-.selector button:hover {
-  background: var(--accent3);
-  color: #000;
-}
-
-/* Playlist Display */
-#playlist a {
-  display: block;
-  margin: 0.5rem 0;
-  color: var(--accent3);
-  text-decoration: none;
+.platform-group select.platform-select {
+  background: #954C2E;
+  color: #FFE3A9;
+  border: none;
   font-weight: bold;
-  transition: transform 0.2s ease;
+  letter-spacing: 0.5px;
 }
+
+button#generate-btn {
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #725CAD, #8CCDEB);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s ease;
+  margin: 0 auto;
+  display: block;
+  min-width: 180px;
+}
+
+button#generate-btn:hover {
+  background: linear-gradient(45deg, #8CCDEB, #FFE3A9);
+  color: #131D4F;
+}
+
+#playlist {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #FFE3A9;
+  min-height: 80px;
+  word-wrap: break-word;
+}
+
+#playlist a {
+  color: #8CCDEB;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 #playlist a:hover {
-  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+/* Chatbot Styles */
+
+.chatbot {
+  margin-top: 3rem;
+  text-align: center;
+  background: #725CAD;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 6px 15px rgba(114, 92, 173, 0.6);
+}
+
+.chatbot h3 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+#chat-input {
+  width: 70%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  outline: none;
+}
+
+#chat-send {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: #131D4F;
+  color: #FFE3A9;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#chat-send:hover {
+  background: #954C2E;
+}
+
+#chat-response {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #FFE3A9;
+  min-height: 40px;
 }
 
 /* Footer */
+
 footer {
   margin-top: 4rem;
-  padding: 1.5rem;
-  background: var(--accent4);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-footer a {
-  color: var(--accent3);
-  text-decoration: none;
-  font-weight: bold;
-}
-footer i {
-  margin-right: 5px;
+  text-align: center;
+  color: #FFE3A9;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
-/* Light/Dark Mode Toggle */
-.toggle-theme {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--accent2);
-  border: none;
-  padding: 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
+footer p.social-icons {
+  margin-top: 0.5rem;
 }
 
-/* MoodBot */
-#chatbot {
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  backdrop-filter: blur(4px);
-}
-#chatbot h2 {
-  margin-bottom: 1rem;
-}
-#chatbox {
-  background: #fff;
-  color: #000;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: left;
-  font-size: 0.9rem;
+footer p.social-icons a {
+  margin: 0 10px;
+  color: #8CCDEB;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }
 
-/* Animated Background Music Notes */
-@keyframes floatNotes {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.3;
+footer p.social-icons a:hover {
+  color: #FFE3A9;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .selectors {
+    flex-direction: column;
   }
-  100% {
-    transform: translateY(-800px) rotate(720deg);
-    opacity: 0;
+  #chat-input {
+    width: 100%;
+    margin-bottom: 0.7rem;
+  }
+  #chat-send {
+    width: 100%;
   }
 }
-.note {
-  position: fixe
