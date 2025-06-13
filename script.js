@@ -2,7 +2,7 @@
 function generatePlaylist() {
   const mood = document.getElementById("mood").value;
   const weather = document.getElementById("weather").value;
-  const platform = document.getElementById("platform").value;
+  const platform = document.querySelector('input[name="platform"]:checked').value;
   const language = document.getElementById("language").value;
   const playlistDiv = document.getElementById("playlist");
   playlistDiv.innerHTML = `
@@ -59,7 +59,6 @@ function generatePlaylist() {
   }
 }
 const platformButtons = document.querySelectorAll('.platform-btn');
-const platform = document.querySelector('input[name="platform"]:checked').value;
 let selectedPlatform = 'spotify';
 
 platformButtons.forEach(btn => {
