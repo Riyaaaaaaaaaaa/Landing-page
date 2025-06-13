@@ -51,5 +51,24 @@ function generatePlaylist() {
     `;
   }
 }
+const platformButtons = document.querySelectorAll('.platform-btn');
+let selectedPlatform = 'spotify';
 
+platformButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    platformButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedPlatform = btn.dataset.platform;
+  });
+});
+
+document.getElementById('generateBtn').addEventListener('click', () => {
+  const mood = document.getElementById('mood').value;
+  const language = document.getElementById('language').value;
+
+  const playlistDiv = document.getElementById('playlist');
+  playlistDiv.innerHTML = `<p>Fetching ${selectedPlatform} playlist for mood <strong>${mood}</strong> and language <strong>${language}</strong>...</p>`;
+
+  // Your API call or playlist logic here
+});
 
