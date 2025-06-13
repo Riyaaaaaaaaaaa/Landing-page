@@ -5,7 +5,7 @@ const weather = document.getElementById("weather");
 const platform = document.getElementById("platform");
 const language = document.getElementById("language");
 
-// Dummy curated playlist links based on all 4 selections
+// Expanded dummy curated playlist links based on all 4 selections (sample, expand as needed)
 const playlists = {
   happy: {
     sunny: {
@@ -16,8 +16,16 @@ const playlists = {
       hindi: {
         spotify: ["https://open.spotify.com/playlist/37i9dQZF1DX3Kdv0IChEm9"],
         youtube: ["https://youtube.com/playlist?list=PLhappy-sun-hi-yt"]
+      },
+      tamil : {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DX3Kdv0IChEm9"],
+        youtube: ["https://youtube.com/playlist?list=PLhappy-sun-hi-yt"]
+      },
+      malayalam: {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC"],
+        youtube: ["https://youtu.be/FAn2i7gu32w?si=SQl8FyQgdoPaN_NQ"]
       }
-    },
+   },
     rainy: {
       english: {
         spotify: ["https://open.spotify.com/playlist/37i9dQZF1DXbvABJXBIyiY"],
@@ -26,10 +34,32 @@ const playlists = {
       hindi: {
         spotify: ["https://open.spotify.com/playlist/37i9dQZF1DWYxwmBaMqxsl"],
         youtube: ["https://youtube.com/playlist?list=PLhappy-rain-hi-yt"]
+      },
+      tamil : {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DX3Kdv0IChEm9"],
+        youtube: ["https://youtube.com/playlist?list=PLhappy-sun-hi-yt"]
+      },
+      malayalam: {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC"],
+        youtube: ["https://youtu.be/FAn2i7gu32w?si=SQl8FyQgdoPaN_NQ"]
+      }
+    },
+    windy: {
+      malayalam: {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DX7K31D69s4M1"],
+        youtube: ["https://youtube.com/playlist?list=PLwindy-malayalam"]
       }
     }
-  }
-  // You can expand this object with all 4*7*4 options as needed
+  },
+  anxious: {
+    windy: {
+      malayalam: {
+        spotify: ["https://open.spotify.com/playlist/37i9dQZF1DX0ZQP1lZ3I1D"],
+        youtube: ["https://youtube.com/playlist?list=PLanxious-windy-mal-yt"]
+      }
+    }
+  },
+  // Add all other moods, weather, languages and platforms similarly
 };
 
 function generatePlaylist() {
@@ -38,16 +68,10 @@ function generatePlaylist() {
   const selectedPlatform = platform.value;
   const selectedLanguage = language.value;
 
-  let links = [];
-
-  try {
-    links =
-      playlists[selectedMood]?.[selectedWeather]?.[selectedLanguage]?.[selectedPlatform] || [];
-  } catch (e) {
-    links = [];
-  }
-
   playlistDiv.innerHTML = "";
+
+  const links =
+    playlists?.[selectedMood]?.[selectedWeather]?.[selectedLanguage]?.[selectedPlatform] || [];
 
   if (links.length === 0) {
     playlistDiv.innerHTML = "<p>No playlist available for this combination yet.</p>";
@@ -56,29 +80,29 @@ function generatePlaylist() {
       const a = document.createElement("a");
       a.href = link;
       a.target = "_blank";
+      a.rel = "noopener noreferrer";
       a.textContent = "🎵 Click to open your playlist";
+      a.classList.add("playlist-link");
       playlistDiv.appendChild(a);
     });
   }
 }
 
-// MoodBot dummy chat interaction
-function showBotMessage() {
-  const chatbox = document.getElementById("chatbox");
-  chatbox.innerHTML = `
-    <p>👋 Hi, I'm MoodBot! Tell me how you're feeling, and I’ll suggest the perfect vibe!</p>
-    <p>Example: "I'm feeling relaxed and it's cloudy" → try 'Chill Vibes on a Cloudy Day'</p>
-  `;
-}
-
-// Dark/Light Mode Toggle
-const toggleBtn = document.querySelector(".toggle-theme");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-});
-
-// Background Animation - Music Notes
+// Background Animation - subtle floating music notes
 function createMusicNote() {
   const note = document.createElement("div");
   note.classList.add("note");
-  note.textContent =
+  note.textContent = "♪"; // or "♫"
+  note.style.left = Math.random() * window.innerWidth + "px";
+  note.style.animationDuration = 3 + Math.random() * 3 + "s";
+  note.style.opacity = 0.6 + Math.random() * 0.4;
+
+  document.body.appendChild(note);
+
+  setTimeout(() => {
+    note.remove();
+  }, 6000); // Remove after animation
+}
+
+setInterval(createMusicNote, 700); // every 0.7s
+
