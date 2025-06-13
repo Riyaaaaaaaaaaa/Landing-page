@@ -3,8 +3,15 @@ function generatePlaylist() {
   const mood = document.getElementById("mood").value;
   const weather = document.getElementById("weather").value;
   const platform = document.getElementById("platform").value;
+  const language = document.getElementById("language").value;
   const playlistDiv = document.getElementById("playlist");
-
+  playlistDiv.innerHTML = `
+    <p><strong>Platform:</strong> ${platform.toUpperCase()}</p>
+    <p><strong>Mood:</strong> ${mood}</p>
+    <p><strong>Weather:</strong> ${weather}</p>
+    <p><strong>Language:</strong> ${language}</p>
+    <p><em>🎶 Generating a curated playlist for you...</em></p>
+  `;
   // YouTube playlist map (Add more as needed)
   const youtubePlaylists = {
     happy: "PL55713C70BA91BD6E",
@@ -52,6 +59,7 @@ function generatePlaylist() {
   }
 }
 const platformButtons = document.querySelectorAll('.platform-btn');
+const platform = document.querySelector('input[name="platform"]:checked').value;
 let selectedPlatform = 'spotify';
 
 platformButtons.forEach(btn => {
