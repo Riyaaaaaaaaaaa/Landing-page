@@ -108,3 +108,31 @@ button:hover {
   font-size: 1rem;
   color: #222;
 }
+.platform-toggle {
+  margin-top: 1.5rem;
+}
+
+.toggle-group {
+  display: inline-flex;
+  border: 2px solid #764ba2;
+  border-radius: 50px;
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+
+.toggle-group input[type="radio"] {
+  display: none;
+}
+
+.toggle-group label {
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  background-color: #fff;
+  color: #764ba2;
+  transition: all 0.3s ease;
+}
+
+.toggle-group input[type="radio"]:checked + label {
+  background-color: #764ba2;
+  color: #fff;
+}
